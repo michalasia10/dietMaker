@@ -1,8 +1,10 @@
-from sqlalchemy import Boolean, Column, ForeignKey, Integer, String,Float,Enum
+from sqlalchemy.sql.schema import Column, ForeignKey
+from sqlalchemy.sql.sqltypes import Integer,String,Float,Enum
 from sqlalchemy_utils import URLType,ChoiceType
 from sqlalchemy.orm import relationship
-from .database import Base
+from database import Base
 import enum
+
 
 class User(Base):
     __tablename__ = 'users'
@@ -28,8 +30,7 @@ class Unit(Base):
 
 
 class Product(Base):
-
-    __tabelname__ = 'products'
+    __tablename__ = 'products'
 
     id = Column(Integer, primary_key=True, index=True)
     name = Column(String, index=True,unique=True)
@@ -44,7 +45,7 @@ class Product(Base):
     product_as_ingredients = relationship("Ingredient", back_populates='product')
 
 
-class Units(enum.Enum):
+class Units(str,enum.Enum):
     l = 'liter'
     ml = 'mililiter'
     g = 'gram'
