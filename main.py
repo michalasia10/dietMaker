@@ -1,11 +1,14 @@
 from fastapi import FastAPI
-from db.database import engine , Base
+from db.database import Base
 from routers import category
+from db.database import engine
+from models import models
 
 
 app = FastAPI(title='dietmaker')
 
-Base.metadata.create_all(bind=engine)
+models.Base.metadata.create_all(bind=engine)
+
 
 app.include_router(category.router)
 

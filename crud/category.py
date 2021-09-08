@@ -1,5 +1,5 @@
 from sqlalchemy.orm import Session
-from models.category import Category
+from models.models import Category
 
 def create_category(db:Session,request):
     db_category = Category(name=request.name,pict_url=request.pict_url)
