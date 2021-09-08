@@ -1,9 +1,8 @@
 from sqlalchemy.orm import Session
 from models.models import Category
 from fastapi import HTTPException,status
+from .repeated_crud.repetead import get_by_id
 
-def get_by_id(db:Session,model,id):
-    return db.query(model).filter(model.id == id)
 
 def create_category(db:Session,request):
     db_category = Category(name=request.name,pict_url=request.pict_url)
