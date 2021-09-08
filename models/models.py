@@ -1,8 +1,8 @@
 from sqlalchemy.sql.schema import Column, ForeignKey
 from sqlalchemy.sql.sqltypes import Integer,String,Float,Enum
-from sqlalchemy_utils import URLType,ChoiceType
+from sqlalchemy_utils import URLType
 from sqlalchemy.orm import relationship
-from database import Base
+from db.database import Base
 import enum
 
 
@@ -23,10 +23,6 @@ class Category(Base):
 
     products = relationship("Product",back_populates='category')
 
-class Unit(Base):
-    __tablename__ = 'units'
-    id = Column(Integer,primary_key=True,index=True)
-    name = Column(String,index=True)
 
 
 class Product(Base):
