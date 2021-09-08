@@ -1,13 +1,11 @@
 from pydantic import BaseModel
 
-class CreateCategory(BaseModel):
+class CategoryBase(BaseModel):
     name : str
     pict_url : str
 
-class Category(BaseModel):
+class Category(CategoryBase):
     id:int
-    name:str
-    pict_url:str
 
     class Config:
         orm_mode = True
