@@ -1,7 +1,6 @@
 from sqlalchemy.orm import Session
 from models.models import Category
-from fastapi import HTTPException, status
-from .repeated_crud.repetead import get_by_id, create, get_all
+from .repeated_crud.repetead import get_by_id, create, get_all, delete
 
 
 def create_category(db: Session, request):
@@ -9,15 +8,7 @@ def create_category(db: Session, request):
 
 
 def delete_category(db: Session, category_id):
-    category = get_by_id(db, Category, category_id)
-    if not category.first():
-        raise HTTPException(
-            status_code=status.HTTP_404_NOT_FOUND,
-            detail=f"Category {category_id} doesn't exist"
-        )
-    category.delete(synchronize_session=False)
-    db.commit()
-    return {'description': f'Category ID: {category_id} deleted.'}
+    return delete(db, Category, category_id)
 
 
 def get_category(db: Session, category_id):
