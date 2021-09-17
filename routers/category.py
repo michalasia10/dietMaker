@@ -3,7 +3,8 @@ from typing import List
 from fastapi import APIRouter, Depends, status
 from sqlalchemy.orm import Session
 
-from crud.category import create_category, get_category, get_all_categories, delete_category, get_category_items
+from crud.category import create_category, get_category, get_all_categories, \
+    delete_category, get_category_items, update_category
 from db.get_db import get_db
 from schemas.category import Category, CategoryBase, CategoryWithItems
 
@@ -34,9 +35,14 @@ def get_category_by_id(category_id: int, db: Session = Depends(get_db)):
     return category
 
 
+@router.put("/{category_id}")
+def update_category_by_id(request: CategoryBase, category_id: int, db: Session = Depends(get_db)):
+    return update_category(db, category_id, request)
+
+
 @router.delete("/delete/{category_id}",
                status_code=status.HTTP_204_NO_CONTENT)
-def delete_by_id(category_id: int, db: Session = Depends(get_db)):
+def delete_category_by_id(category_id: int, db: Session = Depends(get_db)):
     return delete_category(db, category_id)
 
 

@@ -21,8 +21,8 @@ class Category(Base):
     __tablename__ = 'categories'
 
     id = Column(Integer,primary_key=True,index=True)
-    name = Column(String,index=True,unique=True)
-    pict_url = Column(URLType,index=True)
+    name = Column(String, index=True, unique=True)
+    pict_url = Column(URLType, index=True, )
 
     recipes = relationship("Recipe", back_populates='category')
 
