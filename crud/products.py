@@ -1,6 +1,7 @@
 from sqlalchemy.orm import Session
+
 from models.models import Product
-from .repeated_crud.repetead import get_by_id, create, get_all, delete
+from .repeated_crud.repetead import get_by_id, create
 
 
 def create_product(db:Session,request):
