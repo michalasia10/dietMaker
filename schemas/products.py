@@ -1,6 +1,14 @@
-from typing import Optional
+from typing import Optional, List
 
 from pydantic import BaseModel
+
+
+class Tagsbase(BaseModel):
+    id: int
+    name: str
+
+    class Config:
+        orm_mode = True
 
 
 class ProductBase(BaseModel):
@@ -26,6 +34,7 @@ class ProductMakros(BaseModel):
 class Product(ProductBase):
     id: int
     description: Optional[str] = None
+    tags: List[Tagsbase] = []
 
     class Config:
         orm_mode = True
