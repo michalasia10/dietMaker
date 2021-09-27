@@ -2,7 +2,7 @@ import json
 
 from sqlalchemy.orm import Session
 
-from models.models import Ingredient, Recipe, Product
+from models.meal import Ingredient, Recipe, Product
 from .repeated_crud.repetead import get_by_id_with_valid, get_all, create_with_relation, update
 
 

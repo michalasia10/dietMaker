@@ -1,6 +1,6 @@
 from sqlalchemy.orm import Session
 
-from models.models import Recipe
+from models.meal import Recipe
 from .repeated_crud.repetead import create, get_all, get_by_id_with_valid, delete, update
 
 

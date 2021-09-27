@@ -1,6 +1,6 @@
 from sqlalchemy.orm import Session
 
-from models.models import Product
+from models.meal import Product
 from .repeated_crud.repetead import get_by_id, create, get_all, delete
 
 
