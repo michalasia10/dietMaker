@@ -27,6 +27,10 @@ def get_by_id(db: Session, model, id: int):
     return db.query(model).filter(model.id == id)
 
 
+def get_by_code(db: Session, model, code: int):
+    return db.query(model).filter(model.code == code)
+
+
 def get_by_id_with_valid(db: Session, model, id: int):
     item = get_by_id(db, model, id)
     if not item.first():
@@ -39,25 +43,25 @@ def check_exist_by_name(db: Session, model, request: dict):
     return db.query(model).filter(model.name == name)
 
 
+def simple_object_creator(db: Session, model, **krwags):
+    model = model(**krwags)
+    db.add(model)
+    db.commit()
+    db.refresh(model)
+    return model
+
+
 def create(db: Session, model, request):
     requestAsDict = json.loads(request.json())
     new_db_item = check_exist_by_name(db, model, requestAsDict)
     if new_db_item.first():
         warning(model, 400, name=requestAsDict['name'])
-    new_db_item = model(**requestAsDict)
-    db.add(new_db_item)
-    db.commit()
-    db.refresh(new_db_item)
-    return new_db_item
+    return simple_object_creator(db, model, **requestAsDict)
 
 
 def create_with_relation(db: Session, model, request):
     requestAsDict = json.loads(request.json())
-    new_db_item = model(**requestAsDict)
-    db.add(new_db_item)
-    db.commit()
-    db.refresh(new_db_item)
-    return new_db_item
+    return simple_object_creator(db, model, **requestAsDict)
 
 
 def delete(db: Session, model, id: int, ) -> Dict[str, str]:
