@@ -14,10 +14,12 @@ class DailyMealPlan(Base):
 
     id = Column(Integer, primary_key=True, index=True)
     date = Column(TIMESTAMP, default=datetime.datetime.now().timestamp(), index=True, unique=True)
-    user_id = Column(Integer, ForeignKey('users.id'))
-    user = relationship("User", back_populates='day_meals')
+    meal_id = Column(Integer, ForeignKey('meals.id'))
+    meal = relationship("Meal", back_populates='day_meals')
     recipes = relationship("RecipeInMeal", back_populates='daily_meal')
     products = relationship("ProductInMeal", back_populates='daily_meal')
+
+
 
 
 class Category(Base):
@@ -44,6 +46,17 @@ class Tag(Base):
     product = relationship('Product', secondary=association_table_tags, back_populates='tags')
 
 
+association_table_product_ingredient = Table("association_table_product_ingredient", Base.metadata,
+                                             Column("ingredient_id", ForeignKey('ingredients.id'), primary_key=True),
+                                             Column('product_id', ForeignKey('products.id'), primary_key=True)
+                                             )
+
+association_table_product_in_meal = Table("association_table_product_in_meal", Base.metadata,
+                                          Column("productinmeal_id", ForeignKey('productinmeals.id'), primary_key=True),
+                                          Column('product_id', ForeignKey('products.id'), primary_key=True)
+                                          )
+
+
 class Product(Base):
     __tablename__ = 'products'
 
@@ -58,8 +71,22 @@ class Product(Base):
     description = Column(String, index=True, default='')
 
     tags = relationship('Tag', secondary=association_table_tags, back_populates='product')
-    product_as_ingredients = relationship("Ingredient", back_populates='product', uselist=False)
-    product_as_meal = relationship("ProductInMeal", back_populates='product')
+    product_as_ingredients = relationship("Ingredient", secondary=association_table_product_ingredient,
+                                          back_populates='product', uselist=False)
+    product_as_meal = relationship("ProductInMeal", secondary=association_table_product_in_meal,
+                                   back_populates='product')
+
+
+association_table_unit_in_ingredient = Table("association_table_unit_in_ingredient", Base.metadata,
+                                             Column("ingredient_id", ForeignKey('ingredients.id'), primary_key=True),
+                                             Column('unit_id', ForeignKey('units.id'), primary_key=True)
+                                             )
+
+association_table_unit_in_productinmeal = Table("association_table_unit_in_productinmeal", Base.metadata,
+                                                Column("productinmeal_id", ForeignKey('productinmeals.id'),
+                                                       primary_key=True),
+                                                Column('unit_id', ForeignKey('units.id'), primary_key=True)
+                                                )
 
 
 class Unit(Base):
@@ -75,12 +102,17 @@ class Ingredient(Base):
     id = Column(Integer, primary_key=True, index=True)
     recipe_id = Column(Integer, ForeignKey('recipes.id'))
     recipe = relationship("Recipe", back_populates='ingredients')
-    product_id = Column(Integer, ForeignKey('products.id'))
-    product = relationship("Product", back_populates='product_as_ingredients')
+    product = relationship("Product", secondary=association_table_product_ingredient,
+                           back_populates='product_as_ingredients')
     name = association_proxy('product', 'name')
-    unit_id = Column(Integer, ForeignKey('units.id'))
-    unit = relationship("Unit", back_populates='ingreditens')
+    unit = relationship("Unit", secondary=association_table_unit_in_ingredient, back_populates='ingreditens')
     amount = Column(Float, index=True)
+
+
+association_table_recipe_in_meal = Table("association_table_recipe_in_meal", Base.metadata,
+                                         Column("recipeinmeal_id", ForeignKey('recipeinmeals.id'), primary_key=True),
+                                         Column('recipe_id', ForeignKey('recipes.id'), primary_key=True)
+                                         )
 
 
 class Recipe(Base):
@@ -94,20 +126,18 @@ class Recipe(Base):
     ingredients = relationship("Ingredient", back_populates='recipe')
     description = Column(String, index=True, default='', )
 
-    recipe_in_meal = relationship("RecipeInMeal", back_populates='recipe')
+    recipe_in_meal = relationship("RecipeInMeal", secondary=association_table_recipe_in_meal, back_populates='recipe')
 
 
 class ProductInMeal(Base):
     __tablename__ = 'productinmeals'
 
     id = Column(Integer, primary_key=True, index=True)
-    product_id = Column(Integer, ForeignKey('products.id'))
-    product = relationship("Product", back_populates='product_as_meal')
+    product = relationship("Product", secondary=association_table_product_in_meal, back_populates='product_as_meal')
     daily_meal_id = Column(Integer, ForeignKey('dailymealplans.id'))
     daily_meal = relationship("DailyMealPlan", back_populates='products')
     name = association_proxy('product', 'name')
-    unit_id = Column(Integer, ForeignKey('units.id'))
-    unit = relationship("Unit", back_populates='product_as_meal')
+    unit = relationship("Unit", secondary=association_table_unit_in_productinmeal, back_populates='product_as_meal')
     amount = Column(Float, index=True)
 
 
@@ -115,7 +145,6 @@ class RecipeInMeal(Base):
     __tablename__ = 'recipeinmeals'
 
     id = Column(Integer, primary_key=True, index=True)
-    recipe_id = Column(Integer, ForeignKey('recipes.id'))
-    recipe = relationship("Recipe", back_populates='recipe_in_meal')
+    recipe = relationship("Recipe", secondary=association_table_recipe_in_meal, back_populates='recipe_in_meal')
     daily_meal_id = Column(Integer, ForeignKey('dailymealplans.id'))
     daily_meal = relationship('DailyMealPlan', back_populates='recipes')

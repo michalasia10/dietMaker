@@ -10,8 +10,11 @@ class Meal(Base):
 
     id = Column(Integer, primary_key=True, index=True)
     name = Column(String, unique=True, index=True)
+    settings_id = Column(Integer, ForeignKey('usersettings.id'))
+    settings = relationship("UserSetting", back_populates='makro')
+    usermacro = relationship("UserMealMacro", back_populates='meal')
+    day_meals = relationship("DailyMealPlan", back_populates='meal')
 
-    usermacro = relationship("UserMealMacro")
 
 
 class User(Base):
@@ -21,7 +24,7 @@ class User(Base):
     email = Column(String, unique=True, index=True)
     hashed_password = Column(String)
     settings = relationship("UserSetting", back_populates='user')
-    day_meals = relationship("DailyMealPlan", back_populates='user')
+
 
 
 class UserSetting(Base):
@@ -32,17 +35,13 @@ class UserSetting(Base):
     pro = Column(Boolean, default=True)
     user_id = Column(Integer, ForeignKey('users.id'))
     user = relationship("User", back_populates='settings')
-    makro = relationship("UserMealMacro", back_populates='settings')
+    meal_makro = relationship("Meal", back_populates='settings')
 
 
 class UserMealMacro(Base):
     __tablename__ = 'usermealmacros'
 
     id = Column(Integer, primary_key=True, index=True)
-
-    settings_id = Column(Integer, ForeignKey('usersettings.id'))
-    settings = relationship("UserSetting", back_populates='makro')
-
     meal_id = Column(Integer, ForeignKey('meals.id'))
     meal = relationship("Meal", back_populates='usermacro')
 
