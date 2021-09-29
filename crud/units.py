@@ -18,3 +18,4 @@ def create_recipe(db: Session, request):
 
 def delete_recipe(db: Session, recipe_id: int):
     return delete(db, Unit, recipe_id)
+
