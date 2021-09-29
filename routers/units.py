@@ -13,6 +13,7 @@ router = APIRouter(
     tags=["units"],
 )
 
+
 @router.get('/',
             response_model=List[UnitBase])
 def get_all(db: Session = Depends(get_db)):
