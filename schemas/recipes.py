@@ -2,7 +2,7 @@ from typing import List
 
 from pydantic import BaseModel
 
-from .ingredients import Ingredient
+from .ingredients import IngredientCreate
 
 
 class RecipeBase(BaseModel):
@@ -16,4 +16,4 @@ class RecipeBase(BaseModel):
 
 class RecipeWithIngredietns(RecipeBase):
     id: int
-    ingredients: List[Ingredient] = []
+    ingredients: List[IngredientCreate] = []
