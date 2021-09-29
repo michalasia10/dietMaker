@@ -7,7 +7,6 @@ from .repeated_crud.repetead import create, get_all, get_by_id_with_valid, delet
 def get_all_recipie(db: Session):
     return get_all(db, Unit)
 
-
 def get_recipe_by_id(db: Session, unit_id: int):
     return get_by_id_with_valid(db, Unit, unit_id).first()
 
