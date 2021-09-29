@@ -1,6 +1,7 @@
 # DietMaker
 ---
 
+
 Application assumptions: An application that allows you to 
 enjoy normal food without worrying about exceeding your macronutrients.
 
@@ -14,6 +15,7 @@ https://dietmaker.herokuapp.com/
 @GET
 */product/* <br />
 return: Get all product objects 
+
 
 ``` 
  [
@@ -96,42 +98,54 @@ return: Get all product objects
     ]
   }
 ]
+
 ```
 
 @GET
-*/product/<product_id : int >* <br />
-return: Get product with specific id
-
-``` 
-  {
-    "name": "Yellow rice",
-    "pict_url": "https://images.openfoodfacts.org/images/products/001/740/010/5051/front_en.11.200.jpg",
-    "protein": 7.0175438596491,
-    "carbo": 77.19298245614,
-    "fat": 0,
-    "id": 1,
-    "description": "",
-    "tags": [
-      {
-        "id": 1,
-        "name": "Żywność i napoje na bazie roślin"
-      },
-      {
-        "id": 5,
-        "name": "zboża i ich produkty"
-      },
-      {
-        "id": 6,
-        "name": "ziarna zbóż"
-      },
-      {
-        "id": 7,
-        "name": "Rices."
-      }
-    ]
-  }
+**/product/<product_id : int>**<br />  
+return: Product with specific id
+```
+{
+  "name": "Yellow rice",
+  "pict_url": "https://images.openfoodfacts.org/images/products/001/740/010/5051/front_en.11.200.jpg",
+  "protein": 7.0175438596491,
+  "carbo": 77.19298245614,
+  "fat": 0,
+  "id": 1,
+  "description": "",
+  "tags": [
+    {
+      "id": 1,
+      "name": "Żywność i napoje na bazie roślin"
+    },
+    {
+      "id": 2,
+      "name": "Żywność roślinna"
+    },
+    {
+      "id": 3,
+      "name": "Zboża i ziemniaki"
+    },
+    {
+      "id": 4,
+      "name": "posiew"
+    },
+    {
+      "id": 5,
+      "name": "zboża i ich produkty"
+    },
+    {
+      "id": 6,
+      "name": "ziarna zbóż"
+    },
+    {
+      "id": 7,
+      "name": "Rices."
+    }
+  ]
+}
 ```
 
 @DELETE
-*/product/delete/<product_id : int >* <br />
-return: Delete product with specific id
+**/product/delete/<product_id : int>**<br />
+return: Delete object from Product table with specific id
