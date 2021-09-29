@@ -17,6 +17,3 @@ class RecipeBase(BaseModel):
 class RecipeWithIngredietns(RecipeBase):
     id: int
     ingredients: List[Ingredient] = []
-    protein: float
-    carbo: float
-    fat: float
