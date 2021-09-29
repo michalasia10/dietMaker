@@ -9,10 +9,10 @@
  ---
 [**https://dietmaker.herokuapp.com/**](https://dietmaker.herokuapp.com/)
 
-##ENDPOINTS
+## ENDPOINTS
 
-
-###PRODUCT
+---
+### PRODUCT
 
 @GET
 **/product**<br />  return: All products in db
