@@ -1,21 +1,21 @@
 # DietMaker
 ---
 
-**Application assumptions**:
 
- An application that allows you to enjoy normal food without worrying about 
- exceeding your macronutrients.
- 
- ---
-[**https://dietmaker.herokuapp.com/**](https://dietmaker.herokuapp.com/)
+Application assumptions: An application that allows you to 
+enjoy normal food without worrying about exceeding your macronutrients.
 
-## ENDPOINTS
+##API
+https://dietmaker.herokuapp.com/
 
+##ENDPOINTS
+
+###PRODUCT
 ---
-### PRODUCT
-
 @GET
-**/product**<br />  return: All products in db
+*/product/* <br />
+return: Get all product objects 
+
 
 ``` 
  [
