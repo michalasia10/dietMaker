@@ -148,4 +148,4 @@ return: Product with specific id
 
 @DELETE
 **/product/delete/<product_id : int>**<br />
-return: Delete object form Product table with specific id
+return: Delete object from Product table with specific id
