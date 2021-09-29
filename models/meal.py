@@ -93,8 +93,9 @@ class Unit(Base):
     __tablename__ = 'units'
     id = Column(Integer, primary_key=True, index=True)
     name = Column(String, index=True, unique=True)
-    ingreditens = relationship("Ingredient", back_populates='unit')
-    product_as_meal = relationship("ProductInMeal", back_populates='unit')
+    ingreditens = relationship("Ingredient", secondary=association_table_unit_in_ingredient, back_populates='unit')
+    product_as_meal = relationship("ProductInMeal", secondary=association_table_unit_in_productinmeal,
+                                   back_populates='unit')
 
 
 class Ingredient(Base):
