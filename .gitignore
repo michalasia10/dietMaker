@@ -1,3 +1,6 @@
 diet-env
 .idea
 diet.db
+.env
+new_db_schema.png
+db

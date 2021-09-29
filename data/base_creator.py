@@ -43,7 +43,7 @@ def tag_creator(db: Session, tags: List[str], code: int):
 
 
 def product_creator(db: Session, dataframe: pd.DataFrame = DATAFRAME):
-    for idx, row in enumerate(dataframe.itertuples()):
+    for idx, row in enumerate(dataframe[134:].itertuples()):
         code = row._1
         name = row.product_name
         pict_url = row.image_small_url
