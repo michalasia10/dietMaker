@@ -11,7 +11,7 @@ class Meal(Base):
     id = Column(Integer, primary_key=True, index=True)
     name = Column(String, unique=True, index=True)
     settings_id = Column(Integer, ForeignKey('usersettings.id'))
-    settings = relationship("UserSetting", back_populates='makro')
+    settings = relationship("UserSetting", back_populates='meal_makro')
     usermacro = relationship("UserMealMacro", back_populates='meal')
     day_meals = relationship("DailyMealPlan", back_populates='meal')
 
