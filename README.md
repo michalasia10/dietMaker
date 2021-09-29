@@ -5,12 +5,12 @@
 Application assumptions: An application that allows you to 
 enjoy normal food without worrying about exceeding your macronutrients.
 
-##API
+## API
 https://dietmaker.herokuapp.com/
 
-##ENDPOINTS
+## ENDPOINTS
 
-###PRODUCT
+### PRODUCT
 ---
 @GET
 */product/* <br />
