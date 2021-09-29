@@ -5,7 +5,7 @@ from .products import ProductMakros
 
 class IngredientBase(BaseModel):
     amount: int
-    unit: int
+    unit: str
 
     class Config:
         orm_mode = True
