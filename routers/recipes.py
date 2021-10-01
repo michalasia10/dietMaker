@@ -18,7 +18,9 @@ router = APIRouter(
 @router.get('/',
             response_model=List[RecipeWithIngredietns])
 def get_all(db: Session = Depends(get_db)):
-    return get_all_recipie(db)
+    recipes = get_all_recipie(db)
+    print(recipes)
+    return recipes
 
 
 @router.post('/create',
