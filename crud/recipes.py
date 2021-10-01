@@ -21,6 +21,9 @@ def create_recipe(db: Session, request):
 
 
 def delete_recipe(db: Session, recipe_id: int):
+    recipe = get_recipe_by_id(db, recipe_id)
+    recipe.ingredients = []
+    db.commit()
     return delete(db, Recipe, recipe_id)
 
 
