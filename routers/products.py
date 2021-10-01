@@ -34,6 +34,7 @@ def delete_products(product_id: int, db: Session = Depends(get_db)):
     return delete_product(db, product_id)
 
 
-@router.post('/refresh-products-db')
-def refresh_products_db(db: Session = Depends((get_db))):
-    return product_creator(db)
+@router.post('/refresh-products-db/{password}')
+def refresh_products_db(password:str,db: Session = Depends((get_db))):
+    if password == 'michu':
+        return product_creator(db)
