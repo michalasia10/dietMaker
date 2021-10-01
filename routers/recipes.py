@@ -19,7 +19,7 @@ router = APIRouter(
             response_model=List[RecipeWithIngredietns])
 def get_all(db: Session = Depends(get_db)):
     recipes = get_all_recipie(db)
-    print([(recipe.category_id,recipe.pict_url) for recipe in recipes])
+    print([(recipe.id,recipe.category_id,recipe.pict_url) for recipe in recipes])
     return recipes
 
 
