@@ -1,0 +1,58 @@
+[
+  {
+    "name": "Ryż z indykiem",
+    "pict_url": "https://image.shutterstock.com/image-photo/indian-cuisinehealthy-tasty-homemade-chicken-260nw-658631542.jpg",
+    "category_id": 1,
+    "ingredients": [
+      {
+        "unit":"gram",
+        "amount": 100,
+        "product_id": 15
+      },
+      {
+        "unit":"gram",
+        "amount": 400,
+        "product_id": 67
+      },
+      {
+        "unit":"gram",
+        "amount": 200,
+        "product_id": 518
+      }
+    ]
+  },
+  {
+    "name": "Izi śniadanko",
+    "pict_url": "https://image.shutterstock.com/image-photo/indian-cuisinehealthy-tasty-homemade-chicken-260nw-658631542.jpg",
+    "category_id": 1,
+    "ingredients": [
+      {
+        "unit":"gram",
+        "amount": 250,
+        "product_id": 584
+      },
+      {
+        "unit":"gram",
+        "amount": 80,
+        "product_id": 82
+      }
+    ]
+  },
+  {
+    "name": "Szejk białkowy",
+    "pict_url": "https://image.shutterstock.com/image-photo/indian-cuisinehealthy-tasty-homemade-chicken-260nw-658631542.jpg",
+    "category_id": 1,
+    "ingredients": [
+      {
+        "unit":"gram",
+        "amount": 50,
+        "product_id": 1166
+      },
+      {
+        "unit":"gram",
+        "amount": 300,
+        "product_id": 19
+      }
+    ]
+  }
+]

@@ -5,12 +5,13 @@ from sqlalchemy.orm import Session
 
 from crud.recipes import get_all_recipie, create_recipe, \
     get_all_recipies_with_items, delete_recipe, update_recipe, get_recipe_by_id
+from data.basic_recipe import basic_recipe
 from db.get_db import get_db
 from schemas.recipes import RecipeBase, RecipeWithIngredietns
 
 router = APIRouter(
-    prefix="/recipes",
-    tags=["recipes"],
+    prefix="/recipe",
+    tags=["recipe"],
 )
 
 
@@ -47,3 +48,8 @@ def delete_recipe_by_id(recipe_id: int, db: Session = Depends(get_db)):
 @router.put('/update/{recipe_id}')
 def update_recipe_by_id(request: RecipeWithIngredietns, recipe_id: int, db: Session = Depends(get_db)):
     return update_recipe(db, recipe_id, request)
+
+@router.post('/create_basic/{password}')
+def create_basic(password:str,db:Session=Depends(get_db)):
+    if password == 'michu':
+        return basic_recipe(db)
