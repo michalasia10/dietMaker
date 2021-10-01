@@ -149,3 +149,39 @@ return: Product with specific id
 @DELETE
 **/product/delete/<product_id : int>**<br />
 return: Delete object from Product table with specific id
+
+### PRODUCT
+---
+@GET
+*/recipe/* <br />
+return: Get all recipes objects 
+```
+[
+  {
+    "name": "Ryż z indykiem",
+    "pict_url": "https://image.shutterstock.com/image-photo/indian-cuisinehealthy-tasty-homemade-chicken-260nw-658631542.jpg",
+    "category_id": 1,
+    "id": 3,
+    "ingredients": [
+      {
+        "amount": 100,
+        "unit": [
+          {
+            "name": "gram"
+          }
+        ],
+        "product": [
+          {
+            "name": "Ryż biały długoziarnisty",
+            "pict_url": "https://images.openfoodfacts.org/images/products/20053963/front_pl.3.200.jpg",
+            "protein": 6.7,
+            "carbo": 79,
+            "fat": 0.7
+          }
+        ],
+        "recipe_id": 3
+      },
+      // ...
+  // ...
+]
+```
