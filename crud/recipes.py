@@ -8,10 +8,6 @@ def get_all_recipie(db: Session):
     return get_all(db, Recipe)
 
 
-def get_all_recipies_with_items(db: Session):
-    return get_all(db, Recipe)
-
-
 def get_recipe_by_id(db: Session, recipe_id: int):
     return get_by_id_with_valid(db, Recipe, recipe_id).first()
 

@@ -3,4 +3,4 @@ diet-env
 diet.db
 .env
 new_db_schema.png
-db
+/db/database.py
