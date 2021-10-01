@@ -21,8 +21,6 @@ class IngredientBase(BaseModel):
 
 class IngredientCreate(IngredientBase):
     recipe_id: int
-
-
     class Config:
         orm_mode = True
 
