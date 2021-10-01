@@ -32,71 +32,10 @@ return: Get all product objects
         "id": 1,
         "name": "Żywność i napoje na bazie roślin"
       },
-      {
-        "id": 2,
-        "name": "Żywność roślinna"
-      },
-      {
-        "id": 3,
-        "name": "Zboża i ziemniaki"
-      },
-      {
-        "id": 4,
-        "name": "posiew"
-      },
-      {
-        "id": 5,
-        "name": "zboża i ich produkty"
-      },
-      {
-        "id": 6,
-        "name": "ziarna zbóż"
-      },
-      {
-        "id": 7,
-        "name": "Rices."
-      }
+      // ...
     ]
   },
-  {
-    "name": "Sok grejpfrutowy",
-    "pict_url": "https://images.openfoodfacts.org/images/products/02751153/front_pl.4.200.jpg",
-    "protein": 0.5,
-    "carbo": 9.5,
-    "fat": 0,
-    "id": 2,
-    "description": "",
-    "tags": [
-      {
-        "id": 1,
-        "name": "Żywność i napoje na bazie roślin"
-      },
-      {
-        "id": 8,
-        "name": "napoje"
-      },
-      {
-        "id": 9,
-        "name": "Napoje oparte na roślinie"
-      },
-      {
-        "id": 10,
-        "name": "Napoje na bazie owoców"
-      },
-      {
-        "id": 11,
-        "name": "soki i nektary"
-      },
-      {
-        "id": 12,
-        "name": "soki owocowe"
-      },
-      {
-        "id": 13,
-        "name": "ściśnięte soki"
-      }
-    ]
-  }
+  // ...
 ]
 
 ```
@@ -118,30 +57,7 @@ return: Product with specific id
       "id": 1,
       "name": "Żywność i napoje na bazie roślin"
     },
-    {
-      "id": 2,
-      "name": "Żywność roślinna"
-    },
-    {
-      "id": 3,
-      "name": "Zboża i ziemniaki"
-    },
-    {
-      "id": 4,
-      "name": "posiew"
-    },
-    {
-      "id": 5,
-      "name": "zboża i ich produkty"
-    },
-    {
-      "id": 6,
-      "name": "ziarna zbóż"
-    },
-    {
-      "id": 7,
-      "name": "Rices."
-    }
+    // ...
   ]
 }
 ```
