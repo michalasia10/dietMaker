@@ -3,8 +3,10 @@ from typing import List
 from fastapi import APIRouter, Depends
 from sqlalchemy.orm import Session
 
+
 from crud.recipes import get_all_recipie, \
     get_all_recipies_with_items, delete_recipe, update_recipe, get_recipe_by_id
+
 from data.basic_recipe import basic_recipe
 from db.get_db import get_db
 from schemas.recipes import RecipeWithIngredietns
@@ -21,6 +23,7 @@ def get_all(db: Session = Depends(get_db)):
     return get_all_recipie(db)
 
 
+
 @router.get('/all-with-items',
             response_model=List[RecipeWithIngredietns])
 def get_all_with_items(db: Session = Depends(get_db)):
@@ -32,6 +35,7 @@ def get_all_with_items(db: Session = Depends(get_db)):
 # def create_new_recipe(request: RecipeBase, db: Session = Depends(get_db)):
 #     category = create_recipe(db, request)
 #     return category
+
 
 
 @router.get('/{recipe_id}',
