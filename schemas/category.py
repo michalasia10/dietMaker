@@ -1,13 +1,13 @@
 from typing import List
 
-from pydantic import BaseModel
+from pydantic import BaseModel, HttpUrl
 
 from .recipes import RecipeWithIngredietns
 
 
 class CategoryBase(BaseModel):
     name: str
-    pict_url: str
+    pict_url: HttpUrl
 
     class Config:
         orm_mode = True
