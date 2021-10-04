@@ -3,8 +3,7 @@ from typing import List
 from fastapi import APIRouter, Depends, status
 from sqlalchemy.orm import Session
 
-from crud.recipes import get_all_recipie, create_recipe, \
-    delete_recipe, update_recipe, get_recipe_by_id
+from crud.recipes import get_all_recipie, create_recipe, delete_recipe, update_recipe, get_recipe_by_id
 from data.basic_recipe import basic_recipe
 from db.get_db import get_db
 from schemas.recipes import RecipeBase, RecipeWithIngredietns
