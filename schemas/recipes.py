@@ -17,3 +17,6 @@ class RecipeBase(BaseModel):
 class RecipeWithIngredietns(RecipeBase):
     id: int
     ingredients: List[IngredientCreate] = []
+
+    class Config:
+        orm_mode = True

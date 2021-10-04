@@ -5,12 +5,68 @@
 Application assumptions: An application that allows you to 
 enjoy normal food without worrying about exceeding your macronutrients.
 
-##API
+## API
 https://dietmaker.herokuapp.com/
 
-##ENDPOINTS
+## ENDPOINTS
 
-###PRODUCT
+### CATEGORY
+---
+@GET
+*/category/* <br />
+return: Get all category objects 
+```
+[
+  {
+    "name": "Healthy Food",
+    "pict_url": "https://media.istockphoto.com/photos/super-food-for-a-healthy-diet-picture-id1081090762?k=20&m=1081090762&s=612x612&w=0&h=8ESzOOTykppA-UC6YpPMvJWLlxNSebbPZyzj3ph2IlM=",
+    "id": 1
+  },
+  // ...
+]
+```
+
+@GET
+*category/with-recipes/{category_id}* <br />
+return: Category objects with recipes belong to category
+```
+{
+  "name": "Healthy Food",
+  "pict_url": "https://media.istockphoto.com/photos/super-food-for-a-healthy-diet-picture-id1081090762?k=20&m=1081090762&s=612x612&w=0&h=8ESzOOTykppA-UC6YpPMvJWLlxNSebbPZyzj3ph2IlM=",
+  "id": 1,
+  "recipes": [
+    {
+      "name": "Ryż z indykiem",
+      "pict_url": "https://image.shutterstock.com/image-photo/indian-cuisinehealthy-tasty-homemade-chicken-260nw-658631542.jpg",
+      "category_id": 1,
+      "id": 3,
+      "ingredients": [
+        {
+          "amount": 100,
+          "unit": [
+            {
+              "name": "gram"
+            }
+          ],
+          "product": [
+            {
+              "name": "Ryż biały długoziarnisty",
+              "pict_url": "https://images.openfoodfacts.org/images/products/20053963/front_pl.3.200.jpg",
+              "protein": 6.7,
+              "carbo": 79,
+              "fat": 0.7
+            }
+          ],
+          "recipe_id": 3
+        },
+        // ...
+    },
+    // ...
+  ]
+}
+```
+
+### PRODUCT
 ---
 @GET
 */product/* <br />
@@ -32,71 +88,10 @@ return: Get all product objects
         "id": 1,
         "name": "Żywność i napoje na bazie roślin"
       },
-      {
-        "id": 2,
-        "name": "Żywność roślinna"
-      },
-      {
-        "id": 3,
-        "name": "Zboża i ziemniaki"
-      },
-      {
-        "id": 4,
-        "name": "posiew"
-      },
-      {
-        "id": 5,
-        "name": "zboża i ich produkty"
-      },
-      {
-        "id": 6,
-        "name": "ziarna zbóż"
-      },
-      {
-        "id": 7,
-        "name": "Rices."
-      }
+      // ...
     ]
   },
-  {
-    "name": "Sok grejpfrutowy",
-    "pict_url": "https://images.openfoodfacts.org/images/products/02751153/front_pl.4.200.jpg",
-    "protein": 0.5,
-    "carbo": 9.5,
-    "fat": 0,
-    "id": 2,
-    "description": "",
-    "tags": [
-      {
-        "id": 1,
-        "name": "Żywność i napoje na bazie roślin"
-      },
-      {
-        "id": 8,
-        "name": "napoje"
-      },
-      {
-        "id": 9,
-        "name": "Napoje oparte na roślinie"
-      },
-      {
-        "id": 10,
-        "name": "Napoje na bazie owoców"
-      },
-      {
-        "id": 11,
-        "name": "soki i nektary"
-      },
-      {
-        "id": 12,
-        "name": "soki owocowe"
-      },
-      {
-        "id": 13,
-        "name": "ściśnięte soki"
-      }
-    ]
-  }
+  // ...
 ]
 
 ```
@@ -118,30 +113,7 @@ return: Product with specific id
       "id": 1,
       "name": "Żywność i napoje na bazie roślin"
     },
-    {
-      "id": 2,
-      "name": "Żywność roślinna"
-    },
-    {
-      "id": 3,
-      "name": "Zboża i ziemniaki"
-    },
-    {
-      "id": 4,
-      "name": "posiew"
-    },
-    {
-      "id": 5,
-      "name": "zboża i ich produkty"
-    },
-    {
-      "id": 6,
-      "name": "ziarna zbóż"
-    },
-    {
-      "id": 7,
-      "name": "Rices."
-    }
+    // ...
   ]
 }
 ```
@@ -149,3 +121,39 @@ return: Product with specific id
 @DELETE
 **/product/delete/<product_id : int>**<br />
 return: Delete object from Product table with specific id
+
+### RECIPE
+---
+@GET
+*/recipe/* <br />
+return: Get all recipes objects 
+```
+[
+  {
+    "name": "Ryż z indykiem",
+    "pict_url": "https://image.shutterstock.com/image-photo/indian-cuisinehealthy-tasty-homemade-chicken-260nw-658631542.jpg",
+    "category_id": 1,
+    "id": 3,
+    "ingredients": [
+      {
+        "amount": 100,
+        "unit": [
+          {
+            "name": "gram"
+          }
+        ],
+        "product": [
+          {
+            "name": "Ryż biały długoziarnisty",
+            "pict_url": "https://images.openfoodfacts.org/images/products/20053963/front_pl.3.200.jpg",
+            "protein": 6.7,
+            "carbo": 79,
+            "fat": 0.7
+          }
+        ],
+        "recipe_id": 3
+      },
+      // ...
+  // ...
+]
+```

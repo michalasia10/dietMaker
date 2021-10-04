@@ -46,7 +46,8 @@ def delete_category_by_id(category_id: int, db: Session = Depends(get_db)):
     return delete_category(db, category_id)
 
 
+
 @router.get("/{category_id}/recipes",
             response_model=CategoryWithItems)
-def get_category_with_items(category_id: int, db: Session = Depends(get_db)):
+def get_category_with_recipes(category_id: int, db: Session = Depends(get_db)):
     return get_category_items(db, category_id)
