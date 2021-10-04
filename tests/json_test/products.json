@@ -1,0 +1,23 @@
+{
+    "BASIC_VALID_PRODUCT_JSON" :
+            {
+                "code":2,
+                "name":"Chicken",
+                "pict_url":"www.google.com/chicken",
+                "protein":25.0,
+                "carbo":0.2,
+                "fat":5,
+                "kcal":200.0,
+                "description":""
+            },
+        "BASIC_INVALID_PRODUCT_JSON" :
+            {
+                "code":"www.google.com/chicken",
+                "name":2,
+                "pict_url":22,
+                "protein":"25.0",
+                "carbo":"0.2",
+                "fat":5,
+                "kcal":"200.0"
+            }
+}
