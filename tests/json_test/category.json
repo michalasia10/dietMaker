@@ -1,0 +1,184 @@
+{
+        "BASIC_VALID_CATEGORY_JSON" :
+            {
+                "name": "Health Food",
+                "pict_url": "https://media.istockphoto.com/photos/super-food-for-a-healthy-diet-picture-id1081090762?k=20&m=1081090762&s=612x612&w=0&h=8ESzOOTykppA-UC6YpPMvJWLlxNSebbPZyzj3ph2IlM="
+            },
+        "BASIC_INVALID_CATEGORY_JSON" :
+            {
+                "name": 22,
+                "pict_url": 22
+            },
+        "CATEGORY_WITH_ITEMS":
+                {
+  "name": "Healthy Food",
+  "pict_url": "https://media.istockphoto.com/photos/super-food-for-a-healthy-diet-picture-id1081090762?k=20&m=1081090762&s=612x612&w=0&h=8ESzOOTykppA-UC6YpPMvJWLlxNSebbPZyzj3ph2IlM=",
+  "id": 1,
+  "recipes": [
+    {
+      "name": "Ryż z indykiem",
+      "pict_url": "https://image.shutterstock.com/image-photo/indian-cuisinehealthy-tasty-homemade-chicken-260nw-658631542.jpg",
+      "category_id": 1,
+      "id": 3,
+      "ingredients": [
+        {
+          "amount": 100,
+          "unit": [
+            {
+              "name": "gram"
+            }
+          ],
+          "product": [
+            {
+              "code": 540958,
+              "name": "Ryż biały długoziarnisty",
+              "pict_url": "https://images.openfoodfacts.org/images/products/20053963/front_pl.3.200.jpg",
+              "protein": 6.7,
+              "carbo": 79,
+              "fat": 0.7,
+              "kcal": 353
+            }
+          ],
+          "recipe_id": 3
+        },
+        {
+          "amount": 400,
+          "unit": [
+            {
+              "name": "gram"
+            }
+          ],
+          "product": [
+            {
+              "code": 565955,
+              "name": "Mięso z uda indyka",
+              "pict_url": "https://images.openfoodfacts.org/images/products/20763527/front_en.3.200.jpg",
+              "protein": 19,
+              "carbo": 0,
+              "fat": 7,
+              "kcal": 144
+            }
+          ],
+          "recipe_id": 3
+        },
+        {
+          "amount": 200,
+          "unit": [
+            {
+              "name": "gram"
+            }
+          ],
+          "product": [
+            {
+              "code": 1418619,
+              "name": "Surówka z młodej kapusty.",
+              "pict_url": "https://images.openfoodfacts.org/images/products/590/044/900/6685/front_pl.4.200.jpg",
+              "protein": 1.6,
+              "carbo": 8.2,
+              "fat": 5.3,
+              "kcal": 91
+            }
+          ],
+          "recipe_id": 3
+        }
+      ]
+    },
+    {
+      "name": "Izi śniadanko",
+      "pict_url": "https://image.shutterstock.com/image-photo/indian-cuisinehealthy-tasty-homemade-chicken-260nw-658631542.jpg",
+      "category_id": 1,
+      "id": 4,
+      "ingredients": [
+        {
+          "amount": 250,
+          "unit": [
+            {
+              "name": "gram"
+            }
+          ],
+          "product": [
+            {
+              "code": 1418961,
+              "name": "Twarożek Domowy grani naturalny",
+              "pict_url": "https://images.openfoodfacts.org/images/products/590/053/100/0300/front_pl.13.200.jpg",
+              "protein": 11,
+              "carbo": 2.4,
+              "fat": 4,
+              "kcal": 90
+            }
+          ],
+          "recipe_id": 4
+        },
+        {
+          "amount": 80,
+          "unit": [
+            {
+              "name": "gram"
+            }
+          ],
+          "product": [
+            {
+              "code": 568735,
+              "name": "Chleb żytni z pełnego ziarna żyta, razowy",
+              "pict_url": "https://images.openfoodfacts.org/images/products/20859688/front_pl.4.200.jpg",
+              "protein": 5.3,
+              "carbo": 37,
+              "fat": 1.4,
+              "kcal": 200
+            }
+          ],
+          "recipe_id": 4
+        }
+      ]
+    },
+    {
+      "name": "Szejk białkowy",
+      "pict_url": "https://image.shutterstock.com/image-photo/indian-cuisinehealthy-tasty-homemade-chicken-260nw-658631542.jpg",
+      "category_id": 1,
+      "id": 5,
+      "ingredients": [
+        {
+          "amount": 50,
+          "unit": [
+            {
+              "name": "gram"
+            }
+          ],
+          "product": [
+            {
+              "code": 1422634,
+              "name": "Koncentrat białka WPC 80 - instatnt",
+              "pict_url": "https://images.openfoodfacts.org/images/products/590/194/766/7422/front_en.27.200.jpg",
+              "protein": 80,
+              "carbo": 5.6,
+              "fat": 8,
+              "kcal": 412
+            }
+          ],
+          "recipe_id": 5
+        },
+        {
+          "amount": 300,
+          "unit": [
+            {
+              "name": "gram"
+            }
+          ],
+          "product": [
+            {
+              "code": 541951,
+              "name": "Mleko świeże bez laktozy 2% tłuszczu",
+              "pict_url": "https://images.openfoodfacts.org/images/products/20062057/front_pl.4.200.jpg",
+              "protein": 3,
+              "carbo": 4.7,
+              "fat": 2,
+              "kcal": 49
+            }
+          ],
+          "recipe_id": 5
+        }
+      ]
+    }
+  ]
+}
+}
