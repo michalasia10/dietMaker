@@ -15,8 +15,8 @@ router = APIRouter(
 
 
 @router.get('/', response_model=List[Product])
-def get_all(db: Session = Depends(get_db)):
-    return get_all_product(db)
+def get_all(skip:int = 0, limit : int = 50,db: Session = Depends(get_db)):
+    return get_all_product(skip,limit,db)
 
 
 @router.post('/create', status_code=status.HTTP_201_CREATED)

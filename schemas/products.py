@@ -12,11 +12,13 @@ class Tagsbase(BaseModel):
 
 
 class ProductBase(BaseModel):
+    code : float
     name: str
     pict_url: str
     protein: float
     carbo: float
     fat: float
+    kcal : float
 
     class Config:
         orm_mode = True

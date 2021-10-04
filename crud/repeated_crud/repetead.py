@@ -19,8 +19,8 @@ def warning(model, code, **kwargs):
         )
 
 
-def get_all(db: Session, model):
-    return db.query(model).offset(0).limit(100).all()
+def get_all(db: Session, model,skip : int = 0, limit: int = 100):
+    return db.query(model).offset(skip).limit(limit).all()
 
 
 def get_by_id(db: Session, model, id: int):
