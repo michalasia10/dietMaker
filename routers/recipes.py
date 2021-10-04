@@ -1,12 +1,12 @@
 from typing import List
 
-from fastapi import APIRouter, Depends, status
+from fastapi import APIRouter, Depends
 from sqlalchemy.orm import Session
 
-from crud.recipes import get_all_recipie, create_recipe, delete_recipe, update_recipe, get_recipe_by_id
+from crud.recipes import get_all_recipie, delete_recipe, update_recipe, get_recipe_by_id
 from data.basic_recipe import basic_recipe
 from db.get_db import get_db
-from schemas.recipes import RecipeBase, RecipeWithIngredietns
+from schemas.recipes import RecipeWithIngredietns
 
 router = APIRouter(
     prefix="/recipe",
@@ -20,11 +20,11 @@ def get_all(db: Session = Depends(get_db)):
     return get_all_recipie(db)
 
 
-@router.post('/create',
-             status_code=status.HTTP_201_CREATED, )
-def create_new_recipe(request: RecipeBase, db: Session = Depends(get_db)):
-    category = create_recipe(db, request)
-    return category
+# @router.post('/create',
+#              status_code=status.HTTP_201_CREATED, )
+# def create_new_recipe(request: RecipeBase, db: Session = Depends(get_db)):
+#     category = create_recipe(db, request)
+#     return category
 
 
 @router.get('/{recipe_id}',
