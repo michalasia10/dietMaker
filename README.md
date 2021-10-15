@@ -71,30 +71,37 @@ return: Category objects with recipes belong to category
 @GET
 */product/* <br />
 return: Get all product objects <br />
-optional: /product with query /product?skip=0&limit=50 <br />
+optional: /product with query /product?limit=50&offset=0 <br />
 return: Get all product objects from 0 to 50 id in db
 
 
 ``` 
- [
-  {
-    "name": "Yellow rice",
-    "pict_url": "https://images.openfoodfacts.org/images/products/001/740/010/5051/front_en.11.200.jpg",
-    "protein": 7.0175438596491,
-    "carbo": 77.19298245614,
-    "fat": 0,
-    "id": 1,
-    "description": "",
-    "tags": [
-      {
-        "id": 1,
-        "name": "Żywność i napoje na bazie roślin"
-      },
-      // ...
-    ]
-  },
-  // ...
-]
+{
+  "items": [
+    {
+      "code": 32164,
+      "name": "Yellow rice",
+      "pict_url": "https://images.openfoodfacts.org/images/products/001/740/010/5051/front_en.11.200.jpg",
+      "protein": 7.0175438596491,
+      "carbo": 77.19298245614,
+      "fat": 0,
+      "kcal": 350.87719298246,
+      "id": 1,
+      "description": "",
+      "tags": [
+        {
+          "id": 1,
+          "name": "Żywność i napoje na bazie roślin"
+        },
+        // ...
+      ]
+    },
+    // ...
+    ],
+  "total": 2020,
+  "limit": 50,
+  "offset": 0
+}
 
 ```
 
@@ -103,11 +110,13 @@ return: Get all product objects from 0 to 50 id in db
 return: Product with specific id
 ```
 {
+  "code": 32164,
   "name": "Yellow rice",
   "pict_url": "https://images.openfoodfacts.org/images/products/001/740/010/5051/front_en.11.200.jpg",
   "protein": 7.0175438596491,
   "carbo": 77.19298245614,
   "fat": 0,
+  "kcal": 350.87719298246,
   "id": 1,
   "description": "",
   "tags": [
