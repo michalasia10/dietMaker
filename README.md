@@ -27,7 +27,7 @@ return: Get all category objects
 ```
 
 @GET
-*category/with-recipes/{category_id}* <br />
+*category/{category_id}/recipes* <br />
 return: Category objects with recipes belong to category
 ```
 {
@@ -70,7 +70,9 @@ return: Category objects with recipes belong to category
 ---
 @GET
 */product/* <br />
-return: Get all product objects 
+return: Get all product objects <br />
+optional: /product with query /product?skip=0&limit=50 <br />
+return: Get all product objects from 0 to 50 id in db
 
 
 ``` 
