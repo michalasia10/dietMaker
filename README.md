@@ -70,7 +70,7 @@ return: Category objects with recipes belong to category
 ---
 @GET
 */product/* <br />
-return: Get all product objects <br />
+return: Get all product objects with pagination default : limit 50 , offset 0 <br />
 optional: /product with query /product?limit=50&offset=0 <br />
 return: Get all product objects from 0 to 50 id in db
 
@@ -137,34 +137,44 @@ return: Delete object from Product table with specific id
 ---
 @GET
 */recipe/* <br />
-return: Get all recipes objects 
+return: Get all recipes objects with pagination default : limit 50 , offset 0 
+optional: /recipe with query /recipe?limit=50&offset=0 <br />
+return: Get all recipe objects from 0 to 50 id in db
 ```
-[
-  {
-    "name": "Ryż z indykiem",
-    "pict_url": "https://image.shutterstock.com/image-photo/indian-cuisinehealthy-tasty-homemade-chicken-260nw-658631542.jpg",
-    "category_id": 1,
-    "id": 3,
-    "ingredients": [
-      {
-        "amount": 100,
-        "unit": [
-          {
-            "name": "gram"
-          }
-        ],
-        "product": [
-          {
-            "name": "Ryż biały długoziarnisty",
-            "pict_url": "https://images.openfoodfacts.org/images/products/20053963/front_pl.3.200.jpg",
-            "protein": 6.7,
-            "carbo": 79,
-            "fat": 0.7
-          }
-        ],
-        "recipe_id": 3
-      },
-      // ...
-  // ...
-]
+  "items": [
+    {
+      "name": "Ryż z indykiem",
+      "pict_url": "https://image.shutterstock.com/image-photo/indian-cuisinehealthy-tasty-homemade-chicken-260nw-658631542.jpg",
+      "category_id": 1,
+      "id": 3,
+      "ingredients": [
+        {
+          "amount": 100,
+          "unit": [
+            {
+              "name": "gram"
+            }
+          ],
+          "product": [
+            {
+              "code": 540958,
+              "name": "Ryż biały długoziarnisty",
+              "pict_url": "https://images.openfoodfacts.org/images/products/20053963/front_pl.3.200.jpg",
+              "protein": 6.7,
+              "carbo": 79,
+              "fat": 0.7,
+              "kcal": 353
+            }
+          ],
+          "recipe_id": 3
+        },
+        // ...
+      ]
+    },
+    // ...
+  ],
+  "total": 3,
+  "limit": 50,
+  "offset": 0
+}
 ```
