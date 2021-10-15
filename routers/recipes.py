@@ -6,6 +6,7 @@ from fastapi_pagination import paginate,LimitOffsetPage
 import os
 from dotenv import load_dotenv
 
+
 from crud.recipes import get_all_recipe, delete_recipe, update_recipe, get_recipe_by_id
 
 from data.basic_recipe import basic_recipe
@@ -28,14 +29,11 @@ def get_all(db: Session = Depends(get_db)):
     return paginate(get_all_recipe(db))
 
 
-
-
 # @router.post('/create',
 #              status_code=status.HTTP_201_CREATED, )
 # def create_new_recipe(request: RecipeBase, db: Session = Depends(get_db)):
 #     category = create_recipe(db, request)
 #     return category
-
 
 
 @router.get('/{recipe_id}',
