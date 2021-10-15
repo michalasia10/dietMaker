@@ -19,9 +19,11 @@ def warning(model, code, **kwargs):
         )
 
 
-def get_all(db: Session, model,skip : int = 0, limit: int = 100):
+def get_all_with_own_paginantion(db: Session, model,skip : int = 0, limit: int = 100):
     return db.query(model).offset(skip).limit(limit).all()
 
+def get_all_with_lib_paginantion(db: Session, model):
+    return db.query(model).all()
 
 def get_by_id(db: Session, model, id: int):
     return db.query(model).filter(model.id == id)

@@ -2,11 +2,16 @@ from typing import List
 
 from fastapi import APIRouter, Depends, status
 from sqlalchemy.orm import Session
-
+from fastapi_pagination import LimitOffsetPage,paginate
+import os
+from dotenv import load_dotenv
 from crud.products import create_product, get_product, get_all_product, delete_product
 from data.base_creator import product_creator
 from db.get_db import get_db
 from schemas.products import ProductBase, Product
+
+load_dotenv()
+PASSWORD = os.environ.get('REFRESH_PASSWORD')
 
 router = APIRouter(
     prefix="/product",
@@ -14,9 +19,9 @@ router = APIRouter(
 )
 
 
-@router.get('/', response_model=List[Product])
-def get_all(skip:int = 0, limit : int = 50,db: Session = Depends(get_db)):
-    return get_all_product(skip,limit,db)
+@router.get('/', response_model=LimitOffsetPage[Product])
+def get_all(db: Session = Depends(get_db)):
+    return paginate(get_all_product(db))
 
 
 @router.post('/create', status_code=status.HTTP_201_CREATED)
@@ -36,5 +41,5 @@ def delete_products(product_id: int, db: Session = Depends(get_db)):
 
 @router.post('/refresh-products-db/{password}')
 def refresh_products_db(password:str,db: Session = Depends((get_db))):
-    if password == 'michu':
+    if password == PASSWORD:
         return product_creator(db)
