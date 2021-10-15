@@ -1,11 +1,11 @@
 from sqlalchemy.orm import Session
 
 from models.meal import Unit
-from .repeated_crud.repetead import create, get_all, get_by_id_with_valid, delete
+from .repeated_crud.repetead import create, get_all_with_own_paginantion, get_by_id_with_valid, delete
 
 
 def get_all_units(db: Session):
-    return get_all(db, Unit)
+    return get_all_with_own_paginantion(db, Unit)
 
 
 def get_unit_by_id(db: Session, unit_id: int):
