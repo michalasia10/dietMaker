@@ -13,7 +13,7 @@ class DailyMealPlan(Base):
     __tablename__ = 'dailymealplans'
 
     id = Column(Integer, primary_key=True, index=True)
-    date = Column(TIMESTAMP, default=datetime.datetime.now().timestamp(), index=True, unique=True)
+    date = Column(TIMESTAMP, default=datetime.datetime.now().timestamp(), index=True)
     meal_id = Column(Integer, ForeignKey('meals.id'))
     meal = relationship("Meal", back_populates='day_meals')
     recipes = relationship("RecipeInMeal", back_populates='daily_meal')
