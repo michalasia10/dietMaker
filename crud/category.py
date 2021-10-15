@@ -1,7 +1,7 @@
 from sqlalchemy.orm import Session
 
 from models.meal import Category
-from .repeated_crud.repetead import get_by_id_with_valid, create, get_all, delete, update
+from .repeated_crud.repetead import get_by_id_with_valid, create, get_all_with_own_paginantion, delete, update
 
 
 def create_category(db: Session, request):
@@ -17,7 +17,7 @@ def get_category(db: Session, category_id: int):
 
 
 def get_all_categories(db: Session):
-    return get_all(db, Category)
+    return get_all_with_own_paginantion(db, Category)
 
 
 def get_category_items(db: Session, category_id: int):
