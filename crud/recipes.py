@@ -1,11 +1,11 @@
 from sqlalchemy.orm import Session
 
 from models.meal import Recipe
-from .repeated_crud.repetead import get_all, get_by_id_with_valid, delete, update
+from .repeated_crud.repetead import get_all_with_lib_paginantion, get_by_id_with_valid, delete, update
 
 
-def get_all_recipie(db: Session):
-    return get_all(db, Recipe)
+def get_all_recipe(db: Session):
+    return get_all_with_lib_paginantion(db, Recipe)
 
 
 def get_recipe_by_id(db: Session, recipe_id: int):
