@@ -2,7 +2,7 @@ import json
 
 from sqlalchemy.orm import Session
 
-from crud.repeated_crud.repetead import simple_object_creator, check_exist_by_name, get_by_id
+from src.app.db_queries.crud import simple_object_creator, check_exist_by_name, get_by_id
 from models.meal import Ingredient, Unit, Product, Recipe
 
 

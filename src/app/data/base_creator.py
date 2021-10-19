@@ -4,7 +4,7 @@ import pandas as pd
 from googletrans import Translator
 from sqlalchemy.orm import Session
 
-from crud.repeated_crud.repetead import check_exist_by_name, get_by_code, simple_object_creator
+from src.app.db_queries.crud import check_exist_by_name, get_by_code, simple_object_creator
 from models.meal import Product, Tag
 
 FILE = 'data/products_in_poland_2021_09_27_14_12.csv'

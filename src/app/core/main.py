@@ -1,8 +1,8 @@
 from fastapi import FastAPI
 from fastapi_pagination import add_pagination
 
-from db.database import Base
-from db.database import engine
+from src.app.core.database.database import Base
+from src.app.core.database.database import engine
 from routers import category, products, ingredients, \
     recipes, units,users,users_settings,user_meals,user_weeks,recipe_in_meal
 
