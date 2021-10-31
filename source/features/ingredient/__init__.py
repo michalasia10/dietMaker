@@ -1,0 +1,1 @@
+from source.features.ingredient.models import Ingredient
