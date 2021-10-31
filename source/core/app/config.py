@@ -21,4 +21,4 @@ else:
 
 APP_NAME = 'dietMaker'
 SERVER_ADRESS = "0.0.0.0"
-SERVER_PORT = "${PORT:-5000}"
+SERVER_PORT = int(os.environ.get("PORT",5000))
