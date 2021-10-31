@@ -2,4 +2,4 @@ diet-env
 .idea
 .env
 new_db_schema.png
-/src/app/core/database/database.py
+/source/app/core/database/database.py

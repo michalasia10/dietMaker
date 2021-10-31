@@ -2,10 +2,9 @@ import json
 
 from fastapi.testclient import TestClient
 
-from db.get_db import get_db
-from main import app
+from source.app.core.database.get_db import get_db
+from source.app.core.main import app
 from tests.utils.overrides import override_get_db
-from tests.utils.settings_db import test_db
 
 app.dependency_overrides[get_db] = override_get_db
 
