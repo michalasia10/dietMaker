@@ -5,7 +5,7 @@ from fastapi_pagination import add_pagination
 from source.core.app.config import APP_NAME, SERVER_ADRESS, SERVER_PORT
 from source.core.app.database.db import Base, engine
 from source.core.app.routers import ROUTERS
-
+from source.features.versions.router import ROUTERS_V_0_3
 
 def add_routers(app: FastAPI, routers: list):
     for route in routers:
@@ -16,6 +16,7 @@ def create_app() -> FastAPI:
     app = FastAPI(
         title=APP_NAME
     )
+    add_routers(app, ROUTERS_V_0_3)
     add_routers(app, ROUTERS)
     add_pagination(app)
     return app
