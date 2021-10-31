@@ -15,8 +15,8 @@ ROUTERS_V_0_3 = [product_0_3, category_0_3, ingredient_0_3, recipe_0_3,
 
 
 basic = APIRouter(
-    prefix="",
-    tags=[""],
+    prefix="/",
+    tags=["/"],
 )
 
 version_0_3 = APIRouter(
