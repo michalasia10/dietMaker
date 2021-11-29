@@ -20,5 +20,13 @@ def delete_week(db:Session,week_id:int):
 def get_week(db:Session,week_id:int):
     return get_by_id(db,DailyMealPlan,week_id).first()
 
+def delete_recipe_from_week(db:Session,week_id:int,recipe_id):
+    week = get_by_id(db, DailyMealPlan, week_id).first()
+    recipe = get_by_id(db,RecipeInMeal,recipe_id).first()
+    week.recipes.remove(recipe)
+    db.commit()
+    print('Deleted')
+
 def get_all_week(db:Session):
-    return get_all_with_own_paginantion(db, DailyMealPlan)
+    data = get_all_with_own_paginantion(db, DailyMealPlan)
+    return data
