@@ -7,7 +7,7 @@ from sqlalchemy.orm import Session
 from source.core.db_queries.crud import check_exist_by_name, get_by_code, simple_object_creator
 from source.features.product.models import Product, Tag
 
-FILE = 'source/resources/products_in_poland_2021_09_27_14_12.csv'
+FILE = 'core/data/resources/products_in_poland_2021_09_27_14_12.csv'
 DATAFRAME = pd.read_csv(FILE)
 
 
