@@ -10,4 +10,4 @@ def delete_user(db:Session,user_id:int):
     return delete(db,User,user_id)
 
 def get_user(db:Session,user_id:int):
-    return get_by_id(db,User,user_id)
+    return get_by_id(db,User,user_id).first()
