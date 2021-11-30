@@ -32,6 +32,6 @@ def delete_products(meal_id: int, db: Session = Depends(get_db)):
 def get_user_meals(user_id: int, db: Session = Depends(get_db)):
     return get_users_meals(db,user_id)
 
-@version.get('/m//m/{user_id}/{timestamp}',response_model=List[UserMeals])
-def get_user_meal_by_time(user_id: int,timestamp:int, db: Session = Depends(get_db)):
-    return get_users_meals_by_timestamp(db,user_id,timestamp)
+@version.get('/m//m/{user_id}/{timestamp}/{count}',response_model=List[UserMeals])
+def get_user_meal_by_time(user_id: int,timestamp:int,count:int, db: Session = Depends(get_db)):
+    return get_users_meals_by_timestamp(db,user_id,timestamp,count)

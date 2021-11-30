@@ -12,7 +12,7 @@ class Meal(Base):
     settings_id = Column(Integer, ForeignKey('usersettings.id'))
     settings = relationship("UserSetting", back_populates='meal_makro')
     usermacro = relationship("UserMealMacro", back_populates='meal')
-    day_meals = relationship("DailyMealPlan", back_populates='meal')
+    day_meals = relationship("DailyMealPlan", back_populates='meal',lazy='dynamic')
 
 
 class UserMealMacro(Base):
