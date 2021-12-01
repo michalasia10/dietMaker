@@ -28,10 +28,8 @@ def get_all_with_lib_paginantion(db: Session, model):
 def get_by_id(db: Session, model, id: int):
     return db.query(model).filter(model.id == id)
 
-
-def get_by_code(db: Session, model, code: int):
-    return db.query(model).filter(model.code == code)
-
+def get_by_atrr(db:Session,model,atrribute,value_to_check):
+    return db.query(model).filter(getattr(model,atrribute) == value_to_check)
 
 def get_by_id_with_valid(db: Session, model, id: int):
     item = get_by_id(db, model, id)
