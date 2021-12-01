@@ -4,7 +4,7 @@ from source.features.recipe.models import RecipeInMeal,Recipe
 from source.features.user.week.models import DailyMealPlan
 from source.core.db_queries.crud  import get_by_id, simple_object_creator, get_all_with_own_paginantion, delete
 
-def create_week(db:Session,timestamp:int,meal_id:int,recipe_id:int):
+def add_recipe(db:Session,timestamp:int,meal_id:int,recipe_id:int):
     newTimestamp = datetime.fromtimestamp(datetime.timestamp(datetime.fromtimestamp(timestamp).replace(hour=0,minute=0,second=0,microsecond=0)))
     dailyMealId = simple_object_creator(db,DailyMealPlan,date=newTimestamp,meal_id=meal_id).id
     recipeInMeal = simple_object_creator(db,RecipeInMeal,daily_meal_id = dailyMealId)
