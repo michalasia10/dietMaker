@@ -10,4 +10,4 @@
 
 Project assumptions: An application that allows you to enjoy normal food without worrying about exceeding your macronutrients.
 
-[Endpoints](https://github.com/michalasia10/dietMaker/wiki)
+[Project wiki](https://github.com/michalasia10/dietMaker/wiki)
