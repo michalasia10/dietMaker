@@ -26,9 +26,10 @@ plan = APIRouter(
 def get_all(db: Session = Depends(get_db)):
     return get_all_week(db)
 
-@plan.post('/{timestamp}/{meal_id}/{recipe_id}', status_code=status.HTTP_201_CREATED)
-def add_recipe_to_plan(timestamp:int,meal_id:int,recipe_id:int, db: Session = Depends(get_db)):
-    return add_recipe(db,timestamp,meal_id,recipe_id)
+@plan.post('/{timestamp}/{meal_id}/{recipe_id}/{user_id}', status_code=status.HTTP_201_CREATED,
+           response_model=List[UserMeals])
+def add_recipe_to_plan(timestamp:int,meal_id:int,recipe_id:int,user_id:int, db: Session = Depends(get_db)):
+    return add_recipe(db,timestamp,meal_id,recipe_id,user_id)
 
 @plan.get('/{user_id}/{timestamp}/{count}',response_model=List[UserMealsWithoutQUery])
 def get_user_meals_by_timestamp_with_count(user_id : int, timestamp:int, count : int,db : Session=Depends(get_db)):
