@@ -22,11 +22,7 @@ def get_meal(db:Session,meal_id:int):
     return get_by_id(db,Meal,meal_id).first()
 
 def get_users_meals(db:Session,user_id:int):
-    user_meals = get_by_id(db, User, user_id).first().settings[0].meal_makro
-    print(user_meals)
-    for i in user_meals:
-        print(i.day_meals.all())
-    return user_meals
+    return get_by_id(db, User, user_id).first().settings[0].meal_makro
 
 def _check_days(days:List[DailyMealPlan],date_list:list):
     dates = [date.date for date in days ]
