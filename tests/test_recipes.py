@@ -3,8 +3,8 @@ import json
 import requests
 from fastapi.testclient import TestClient
 
-from source.app.core.database.get_db import get_db
-from source.app.core.main import app
+from source.core.app.database import get_db
+from source.core.app.server import app
 from tests.utils.overrides import override_get_db
 
 app.dependency_overrides[get_db] = override_get_db
