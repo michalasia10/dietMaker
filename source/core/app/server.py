@@ -27,3 +27,5 @@ Base.metadata.create_all(bind=engine)
 
 def run() -> None:
     uvicorn.run(app, host=SERVER_ADRESS, port=SERVER_PORT,workers=1)
+
+

@@ -7,8 +7,8 @@ from sqlalchemy.orm import Session
 from source.core.db_queries.crud import check_exist_by_name, get_by_atrr, simple_object_creator
 from source.features.product.models import Product, Tag
 
-FILE = 'core/data/resources/products_in_poland_2021_09_27_14_12.csv'
-DATAFRAME = pd.read_csv(FILE)
+# FILE = 'core/data/resources/products_in_poland_2021_09_27_14_12.csv'
+# DATAFRAME = pd.read_csv(FILE)
 
 
 def tags_translator(tags: List[str]) -> List[str]:
@@ -41,7 +41,7 @@ def tag_creator(db: Session, tags: List[str], code: int):
             db.commit()
 
 
-def product_creator(db: Session, dataframe: pd.DataFrame = DATAFRAME):
+def product_creator(db: Session, dataframe: pd.DataFrame):
     for idx, row in enumerate(dataframe[134:].itertuples()):
         code = row._1
         name = row.product_name

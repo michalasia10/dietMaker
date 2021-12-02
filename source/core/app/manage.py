@@ -7,7 +7,6 @@ from source.core.app import server
 
 @click.group("Fast-api App manager")
 def manage() -> None:
-    # the main group of commands
     pass
 
 
@@ -36,3 +35,4 @@ def migrate() -> int:
 
 if __name__ == "__main__":
     manage()
+    database()
