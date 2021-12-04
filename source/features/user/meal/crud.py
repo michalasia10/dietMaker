@@ -8,7 +8,6 @@ from source.features.recipe.models import Recipe
 from source.features.user.meal.models import Meal
 from source.features.user.account.models import User
 from source.features.user.week.models import DailyMealPlan
-from source.features.user.settings.models import UserSetting
 from source.core.db_queries.crud import get_by_id, simple_object_creator, delete
 
 
@@ -29,7 +28,7 @@ def get_users_meals(db: Session, user_id: int):
     return get_by_id(db, User, user_id).first().settings[0].meal_makro
 
 
-def calculate_macro(db: Session, recipes_in_meal: list):
+def calculate_macro(db: Session, recipes_in_meal: list) -> dict:
     macro: dict = {
         'protein': 0,
         'fat': 0,
@@ -47,16 +46,16 @@ def calculate_macro(db: Session, recipes_in_meal: list):
     return macro
 
 
-def _cacluate_macro_for_whole_day(db: Session, days: List[DailyMealPlan]):
-    days_with_macro: list = []
+def _calculate_macro_for_whole_day(db: Session, days: List[DailyMealPlan]) -> List[DailyMealPlan]:
+    days_with_macro: List[DailyMealPlan] = []
     for day in days:
         day.__dict__['macro'] = calculate_macro(db, day.recipes)
         days_with_macro.append(day)
     return days_with_macro
 
 
-def _check_days(db: Session, days: List[DailyMealPlan], date_list: list):
-    days_with_macro: list = _cacluate_macro_for_whole_day(db, days)
+def _check_days(db: Session, days: List[DailyMealPlan], date_list: list) -> List[DailyMealPlan]:
+    days_with_macro: list = _calculate_macro_for_whole_day(db, days)
     dates = [date.date for date in days_with_macro]
     for date in date_list:
         if date not in dates:
