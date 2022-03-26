@@ -1,5 +1,4 @@
 from typing import List
-from sqlalchemy import inspect
 from sqlalchemy.orm import Session
 import json
 from datetime import datetime, timedelta
