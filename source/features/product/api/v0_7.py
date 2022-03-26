@@ -13,5 +13,5 @@ version_0_7 = APIRouter(
 )
 
 @version_0_7.get('/search',response_model=List[Product])
-def search(query_string:str,db: Session = Depends(get_db)):
-    return search_product(db,query_string)
+def search(q:str,db: Session = Depends(get_db)):
+    return search_product(db,q)
