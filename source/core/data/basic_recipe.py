@@ -2,7 +2,7 @@ import json
 
 from sqlalchemy.orm import Session
 
-from source.core.db_queries.crud import check_exist_by_name, get_by_code, simple_object_creator,get_by_id
+from source.core.db_queries.crud import check_exist_by_name, simple_object_creator,get_by_id
 from source.features.product.models import Product
 from source.features.ingredient.models import Ingredient
 from source.features.unit.models import Unit

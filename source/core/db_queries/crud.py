@@ -28,10 +28,8 @@ def get_all_with_lib_paginantion(db: Session, model):
 def get_by_id(db: Session, model, id: int):
     return db.query(model).filter(model.id == id)
 
-
-def get_by_code(db: Session, model, code: int):
-    return db.query(model).filter(model.code == code)
-
+def get_by_atrr(db:Session,model,atrribute,value_to_check):
+    return db.query(model).filter(getattr(model,atrribute) == value_to_check)
 
 def get_by_id_with_valid(db: Session, model, id: int):
     item = get_by_id(db, model, id)
@@ -78,3 +76,7 @@ def update(db: Session, model, id: int, request: dict):
     item.update(request)
     db.commit()
     return {'detail': f'{model} ID: {id} updated.'}
+
+def search_by_attribute(db:Session,model,query_string,search_attr):
+    search_attribute = getattr(model,search_attr)
+    return db.query(model).filter(search_attribute.like(f"%{query_string}%")).all()

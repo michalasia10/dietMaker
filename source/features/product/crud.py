@@ -1,7 +1,7 @@
 from sqlalchemy.orm import Session
 
 from source.features.product.models import Product
-from source.core.db_queries.crud  import get_by_id, create, get_all_with_lib_paginantion, delete
+from source.core.db_queries.crud import get_by_id, create, get_all_with_lib_paginantion, delete, search_by_attribute
 
 
 def create_product(db: Session, request):
@@ -17,3 +17,6 @@ def get_all_product(db: Session):
 
 def delete_product(db: Session, product_id):
     return delete(db, Product, product_id)
+
+def search_product(db:Session,query):
+    return search_by_attribute(db,Product,query,"name")

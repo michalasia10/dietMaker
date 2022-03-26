@@ -18,7 +18,7 @@ def create_new_settings(user_id:int,request: UserSettings, db: Session = Depends
     return create_settings(db, request,user_id)
 
 
-@version.get('/{user_id}', response_model=UserSettings)
+@version.get('/{user_id}')
 def get_settings_by_id(user_id: int, db: Session = Depends(get_db)):
     return get_settings(db, user_id)
 

@@ -1,4 +1,4 @@
-from tests.utils.settings_db import TestingSession
+from tests.conftest import TestingSession
 
 
 def override_get_db():
