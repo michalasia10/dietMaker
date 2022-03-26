@@ -1,4 +1,4 @@
-from typing import Optional, List
+from typing import Optional, List,Union
 
 from pydantic import BaseModel
 
@@ -14,7 +14,7 @@ class Tagsbase(BaseModel):
 class ProductBase(BaseModel):
     code : float
     name: str
-    pict_url: str
+    pict_url: Union[str,None]
     protein: float
     carbo: float
     fat: float
