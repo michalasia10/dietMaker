@@ -8,11 +8,9 @@ from source.features.product.crud import search_product
 from source.features.product.api.v0_3 import version
 
 version_0_7 = APIRouter(
-    prefix="",
+    prefix="/product",
     tags=["product"],
 )
-
-version_0_7.include_router(version)
 
 @version_0_7.get('/search',response_model=List[Product])
 def search(query_string:str,db: Session = Depends(get_db)):
