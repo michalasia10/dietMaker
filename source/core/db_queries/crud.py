@@ -76,3 +76,7 @@ def update(db: Session, model, id: int, request: dict):
     item.update(request)
     db.commit()
     return {'detail': f'{model} ID: {id} updated.'}
+
+def search_by_attribute(db:Session,model,query_string,search_attr):
+    search_attribute = getattr(model,search_attr)
+    return db.query(model).filter(search_attribute.like(f"%{query_string}%")).all()
