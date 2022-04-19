@@ -17,20 +17,19 @@ version = APIRouter(
 
 
 @version.post('/create/{user_id}', status_code=status.HTTP_201_CREATED)
-def create_new_product(settings_id:int, request: UserMealBasic, db: Session = Depends(get_db)):
-    return create_meals(db, request,settings_id)
+def create_new_meal(user_id:int, request: UserMealBasic, db: Session = Depends(get_db)):
+    return create_meals(db, request,user_id)
 
 
 @version.get('/{meal_id}')
-def get_product_by_id(meal_id: int, db: Session = Depends(get_db)):
+def get_meal_by_id(meal_id: int, db: Session = Depends(get_db)):
     return get_meal(db, meal_id)
 
 
 @version.delete('/delete/{meal_id}')
-def delete_products(meal_id: int, db: Session = Depends(get_db)):
+def delete_meal_by_id(meal_id: int, db: Session = Depends(get_db)):
     return delete_meal(db, meal_id)
 
 @plan.get('/{user_id}',response_model=List[UserMeals])
 def get_all_user_meals(user_id: int, db: Session = Depends(get_db)):
-    sth = get_users_meals(db,user_id)
-    return sth
+    return get_users_meals(db,user_id)
