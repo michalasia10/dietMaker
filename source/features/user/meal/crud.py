@@ -22,9 +22,33 @@ def delete_meal(db: Session, meal_id: int):
 def get_meal(db: Session, meal_id: int):
     return get_by_id(db, Meal, meal_id).first()
 
+def find_and_update(user_meals:list,updated_dict,meal_name:str):
+    data : dict
+    for data in user_meals:
+        meal : dict
+        if meal_name in [k['meal'] for k in data['meals']]:
+            for meal in data['meals']:
+                if meal['meal'] == meal_name:
+                    meal.update(updated_dict)
+        else:
+            data['meals'].append(updated_dict)
+    return user_meals
+
+
 
 def get_users_meals(db: Session, user_id: int):
-    return get_by_id(db, User, user_id).first().settings[0].meal_makro
+    settings_id = get_by_id(db, User, user_id).first().settings[0].id
+    meals = db.query(Meal).filter(Meal.settings_id==settings_id).all()
+    user_meals = []
+    for meal in meals:
+        for day_meal in meal.day_meals.all():
+                meal_dict = {'meal': meal.name, 'recipes': day_meal.recipes}
+                if not user_meals:
+                    user_meals.append({'date':day_meal.date,'meals':[meal_dict]})
+                else:
+                    find_and_update(user_meals,meal_dict,meal.name)
+    return user_meals
+
 
 
 def calculate_macro(db: Session, recipes_in_meal: list) -> dict:

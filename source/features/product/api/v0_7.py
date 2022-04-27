@@ -6,13 +6,14 @@ from source.core.app.database.get_db import get_db
 from source.features.product.schema import ProductBase, Product
 from source.features.product.crud import search_product
 from source.features.product.api.v0_3 import version
+from copy import deepcopy
 
 version_0_7 = APIRouter(
     prefix="",
     tags=["product"],
 )
-
-version_0_7.include_router(version)
+copy_version = deepcopy(version)
+version_0_7.include_router(copy_version)
 
 @version_0_7.get('/search',response_model=List[Product])
 def search(query_string:str,db: Session = Depends(get_db)):

@@ -3,6 +3,7 @@ from typing import Dict
 
 from fastapi import HTTPException
 from sqlalchemy.orm import Session
+from source.features.user.week.models import DailyMealPlan
 
 
 def warning(model, code, **kwargs):
@@ -19,17 +20,21 @@ def warning(model, code, **kwargs):
         )
 
 
-def get_all_with_own_paginantion(db: Session, model,skip : int = 0, limit: int = 100):
+def get_all_with_own_paginantion(db: Session, model, skip: int = 0, limit: int = 100):
     return db.query(model).offset(skip).limit(limit).all()
+
 
 def get_all_with_lib_paginantion(db: Session, model):
     return db.query(model).all()
 
+
 def get_by_id(db: Session, model, id: int):
     return db.query(model).filter(model.id == id)
 
-def get_by_atrr(db:Session,model,atrribute,value_to_check):
-    return db.query(model).filter(getattr(model,atrribute) == value_to_check)
+
+def get_by_atrr(db: Session, model, atrribute, value_to_check):
+    return db.query(model).filter(getattr(model, atrribute) == value_to_check)
+
 
 def get_by_id_with_valid(db: Session, model, id: int):
     item = get_by_id(db, model, id)
@@ -77,6 +82,7 @@ def update(db: Session, model, id: int, request: dict):
     db.commit()
     return {'detail': f'{model} ID: {id} updated.'}
 
-def search_by_attribute(db:Session,model,query_string,search_attr):
-    search_attribute = getattr(model,search_attr)
+
+def search_by_attribute(db: Session, model, query_string, search_attr):
+    search_attribute = getattr(model, search_attr)
     return db.query(model).filter(search_attribute.like(f"%{query_string}%")).all()

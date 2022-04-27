@@ -15,6 +15,10 @@ version = APIRouter(
 
 @version.post('/create', status_code=status.HTTP_201_CREATED)
 def create_new_user(request: UserBase, db: Session = Depends(get_db)):
+    """
+    Create new
+    - **request**: sth
+    """
     return create_user(db, request)
 
 

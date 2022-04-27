@@ -1,23 +1,29 @@
-from fastapi import APIRouter, Depends, status
-from sqlalchemy.orm import Session
-from fastapi_pagination import LimitOffsetPage,paginate
 import os
+
 from dotenv import load_dotenv
-from source.features.product.crud import create_product, get_product, get_all_product, delete_product
-from source.core.data.base_creator import product_creator
+from fastapi import APIRouter, Depends, status
+from fastapi_pagination import LimitOffsetPage, paginate
+from sqlalchemy.orm import Session
+
 from source.core.app.database.get_db import get_db
+from source.core.data.base_creator import product_creator
+from source.docs.doc import doc, create_docs
+from source.features.product.crud import create_product, get_product, get_all_product, delete_product
 from source.features.product.schema import ProductBase, Product
 
 load_dotenv()
 PASSWORD = os.environ.get('REFRESH_PASSWORD')
 
+TAG = 'product'
+
 version = APIRouter(
     prefix="/product",
-    tags=["product"],
+    tags=[TAG],
 )
 
 
 @version.get('/', response_model=LimitOffsetPage[Product])
+@doc(create_docs(TAG,'get_all'))
 def get_all(db: Session = Depends(get_db)):
     return paginate(get_all_product(db))
 
@@ -38,6 +44,6 @@ def delete_products(product_id: int, db: Session = Depends(get_db)):
 
 
 @version.post('/refresh-products-db/{password}')
-def refresh_products_db(password:str,db: Session = Depends((get_db))):
+def refresh_products_db(password: str, db: Session = Depends((get_db))):
     if password == PASSWORD:
         return product_creator(db)

@@ -18,12 +18,11 @@ ROUTERS_V_0_7 = [product_0_7]
 
 version_0_3 = APIRouter(
     prefix="/v0.3",
-    tags=["v0.3"],
+    # deprecated=True,
 )
 
 version_0_7 = APIRouter(
     prefix="/v0.7",
-    tags=["v0.7"],
 )
 
 for route in ROUTERS_V_0_3:
